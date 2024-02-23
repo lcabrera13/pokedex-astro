@@ -1,0 +1,23 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PokemonHeader from "@/components/PokemonHeader.astro";
+import PokemonContainer from "@/components/PokemonContainer.astro";
+
+const { name } = Astro.params;
+
+const urlObject = new URL(Astro.url);
+
+const response = await fetch(
+  `${urlObject.origin}/api/get-pokemon.json?name=${name}`,
+);
+const { prevPokemon, pokemon, nextPokemon } = await response.json();
+---
+
+<Layout title="Pokedex">
+  <main class="flex flex-col items-center">
+    <PokemonHeader prevPokemon={prevPokemon} nextPokemon={nextPokemon} />
+    <PokemonContainer pokemon={pokemon} />
+  </main>
+</Layout>
+
+<style></style>

@@ -1,0 +1,43 @@
+---
+import { type Pokemon } from "@/lib/data";
+
+interface Props {
+  prevPokemon: Pokemon | null;
+  nextPokemon: Pokemon | null;
+}
+
+const { prevPokemon, nextPokemon } = Astro.props;
+---
+
+<div class="flex flex-row justify-center gap-2 w-full">
+  <div class="basis-1/2 bg-zinc-400 text-center md:text-right">
+    {
+      prevPokemon && (
+        <a
+          href={`/${prevPokemon.name}`}
+          class="block font-bold px-5 md:px-10 pt-5 pb-5 md:pb-20 text-white text-2xl hover:bg-sky-600"
+        >
+          {`N.º ${prevPokemon.id.toString().padStart(4, "0")}`}
+          <span class="hidden md:inline-block capitalize md:pl-2 text-zinc-700">
+            {prevPokemon.name}
+          </span>
+        </a>
+      )
+    }
+  </div>
+  <div class="basis-1/2 bg-zinc-400 text-center md:text-left">
+    {
+      nextPokemon && (
+        <a
+          href={`/${nextPokemon.name}`}
+          class="block font-bold px-5 md:px-10 pt-5 pb-5 md:pb-20 text-white text-2xl hover:bg-sky-600"
+        >
+          <span class="hidden md:inline-block capitalize md:pr-2 text-zinc-700">
+            {nextPokemon.name}
+          </span>
+          {`N.º ${nextPokemon.id.toString().padStart(4, "0")}`}
+        </a>
+      )
+    }
+  </div>
+</div>
