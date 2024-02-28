@@ -3,7 +3,7 @@ export function PokemonCard({pokemon}) {
     <a href={`/${pokemon.name}`} className="hover:animate-pulsing">
       <article className="flex flex-col">
         <picture className="bg-gray-100 rounded-md" transition:name="media-player">
-          <img className="drop-shadow-[2px_4px_6px_black]" src={pokemon.image} alt={pokemon.name} />
+          <img className={`${pokemon.image ? 'drop-shadow-[2px_4px_6px_black]' : ''}`} src={pokemon.image ?? "/no_image.png"} alt={pokemon.name} />
         </picture>
         <div className="flex flex-col gap-2 px-4 py-2">
           <p className="text-gray-400 text-sm font-semibold">N.º {pokemon.id.toString().padStart(4, "0")}</p>

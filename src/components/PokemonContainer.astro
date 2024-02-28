@@ -23,8 +23,8 @@ const { pokemon } = Astro.props;
     <div class="basis-full md:basis-1/2 flex flex-col">
       <picture class="bg-gray-100 rounded-md" transition:name="media-player">
         <img
-          class="drop-shadow-[2px_4px_6px_black]"
-          src={pokemon.image}
+          class={pokemon.image ? "drop-shadow-[2px_4px_6px_black]" : ""}
+          src={pokemon.image ?? "/no_image.png"}
           alt={pokemon.name}
         />
       </picture>
